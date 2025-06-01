@@ -2,54 +2,55 @@
 
 namespace App\Repository;
 
-use App\Entity\Name;
+use App\Entity\Auteurs;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Name>
+ * @extends ServiceEntityRepository<Auteurs>
  */
-class NameRepository extends ServiceEntityRepository
+class AuteursRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Name::class);
+        parent::__construct($registry, Auteurs::class);
     }
 
+
      // add => vocabulaire lié au pattern repository, mieux que "save"
-     public function add(Name $name): void
+     public function add(Auteurs $auteurs): void
      {
-         $this->getEntityManager()->persist($name);
+         $this->getEntityManager()->persist($auteurs);
          $this->getEntityManager()->flush();
      }
  
-     public function remove(Name $name): void
+     public function remove(Auteurs $auteurs): void
      {
-         $this->getEntityManager()->remove($name);
+         $this->getEntityManager()->remove($auteurs);
          $this->getEntityManager()->flush();
      }
  }
 
 
     //    /**
-    //     * @return Name[] Returns an array of Name objects
+    //     * @return Auteurs[] Returns an array of Auteurs objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('n')
-    //            ->andWhere('n.exampleField = :val')
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('n.id', 'ASC')
+    //            ->orderBy('a.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Name
+    //    public function findOneBySomeField($value): ?Auteurs
     //    {
-    //        return $this->createQueryBuilder('n')
-    //            ->andWhere('n.exampleField = :val')
+    //        return $this->createQueryBuilder('a')
+    //            ->andWhere('a.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()
